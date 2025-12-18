@@ -1,40 +1,9 @@
-# BlueSpice "Pdf" service
+<img alt="BlueSpice Logo" align="right" src="https://bluespice.com/wp-content/uploads/2022/09/bluespice_logo.png" />
 
-This is a service that provides PDF rendering backend for Extension:PDFCreator. It is based on the `xhtmlrenderer` Java library.
+# `bluespice/pdf` service for BlueSpice
 
-## Using it within BlueSpice or MediaWiki
+This service is the pdf component. It provides pdf functionality for BlueSpice.
 
-Given you have this service running at `http://localhost:8080`, you can configure the BlueSpice pdf like this:
+It is part of the [BlueSpice MediaWiki deployment stack](https://github.com/hallowelt/bluespice-deploy). Instructions on how to use it can be found on the [official helpdesk 📚](https://en.wiki.bluespice.com/wiki/Setup:Installation_Guide/Docker). For questions and support, please use the [contact form 🌐](https://bluespice.com/contact/) or visit the [community forums 💡](https://community.bluespice.com/).
 
-```php
-$GLOBALS['wgPDFCreatorHtml2PdfServiceUrl'] = 'http://localhost:8080/Html2PDF/v1';
-```
-
-## How to release a new version
-
-### Build a new version of the image
-```sh
-docker build -t bluespice/pdf:latest .
-```
-
-### Apply proper tags
-HINT: We align the image tags with the version of BlueSpice that it is compatible with.
-
-Example:
-```sh
-docker tag bluespice/pdf:latest bluespice/pdf:5
-docker tag bluespice/pdf:latest bluespice/pdf:5.0
-docker tag bluespice/pdf:latest bluespice/pdf:5.0.1
-```
-
-### Push the image to the registry
-Example:
-```sh
-docker push bluespice/pdf:latest
-docker push bluespice/pdf:5
-docker push bluespice/pdf:5.0
-docker push bluespice/pdf:5.0.1
-```
-
-## Testing
-Install `trivy` and run `trivy image bluespice/pdf` to check for vulnerabilities.
+The `main` branch of this repository is intentionally kept empty. Please refer to the specific version branches (e.g., `5.1.x`, `5.2.x`, etc.) for the relevant Dockerfiles and configurations corresponding to each BlueSpice version.
