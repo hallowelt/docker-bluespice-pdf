@@ -10,18 +10,6 @@ Given you have this service running at `http://localhost:8080`, you can configur
 $GLOBALS['wgPDFCreatorHtml2PdfServiceUrl'] = 'http://localhost:8080/Html2PDF/v1';
 ```
 
-## Error bundles
-
-If a render fails, the service stores the complete input of the document as `<errorId>.zip` in `/data/error-bundles` (`HTML2PDF_BUNDLE_DIR`) and returns the error ID in the `X-Html2PDF-Error-Id` response header. Requires a webservice-html2pdf version that supports error bundles.
-
-Mount a volume to keep the bundles outside of the container. The directory is writable for the group `0`, so it also works with arbitrary user IDs:
-
-```sh
-docker run -p 8080:8080 -v /var/lib/html2pdf/bundles:/data/error-bundles bluespice/pdf:latest
-```
-
-Optional environment variables: `HTML2PDF_BUNDLE_DIR` (empty disables bundles), `HTML2PDF_BUNDLE_RETENTION_DAYS` (default `14`), `HTML2PDF_BUNDLE_MAX_COUNT` (default `100`). Bundles contain the original document content, so treat them as confidential.
-
 ## How to release a new version
 
 ### Build a new version of the image
