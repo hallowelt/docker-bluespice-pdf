@@ -7,8 +7,9 @@ RUN mkdir -p /tmp/.cache/fontconfig && \
     chgrp -R 0 /app /tmp/.cache && \
     chmod -R g=u /app /tmp/.cache
 
-# Build timestamp (UTC, YmdHis)
-RUN mkdir -p /image && date -u +%Y%m%d%H%M%S > /image/BUILDINFO
+# Build info: value of build arg BUILDINFO, falls back to the UTC build timestamp (YmdHis)
+ARG BUILDINFO
+RUN mkdir -p /image && echo "${BUILDINFO:-$(date -u +%Y%m%d%H%M%S)}" > /image/BUILDINFO
 
 ENV XDG_CACHE_HOME=/tmp/.cache
 WORKDIR /app
