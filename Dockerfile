@@ -1,6 +1,6 @@
 FROM eclipse-temurin:25-jre-alpine
-ARG SHA256sum=b6e5ca2ea032424976c7efec2d47cf3c35df4e1c64a4f53f1e01668ea313b0a4
-ARG JAR_URL=https://github.com/hallowelt/webservice-html2pdf/releases/download/2.2.3/html2pdf.jar
+ARG SHA256sum=5e2fd081d5bac86684377aeb928b06c35cc5f0aa8e051a992949fa52543be84c
+ARG JAR_URL=https://github.com/hallowelt/webservice-html2pdf/releases/download/2.2.4/html2pdf.jar
 ADD $JAR_URL /app/html2pdf.jar
 RUN echo "$SHA256sum  /app/html2pdf.jar" | sha256sum -c -
 RUN mkdir -p /tmp/.cache/fontconfig && \
