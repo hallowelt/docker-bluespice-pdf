@@ -6,6 +6,11 @@ RUN echo "$SHA256sum  /app/html2pdf.jar" | sha256sum -c -
 RUN mkdir -p /tmp/.cache/fontconfig && \
     chgrp -R 0 /app /tmp/.cache && \
     chmod -R g=u /app /tmp/.cache
+
+# Build info: value of build arg BUILDINFO, `-` if not set
+ARG BUILDINFO
+RUN mkdir -p /image && echo "${BUILDINFO:--}" > /image/BUILDINFO
+
 ENV XDG_CACHE_HOME=/tmp/.cache
 WORKDIR /app
 
